@@ -75,6 +75,7 @@ static const char *termcmd[]  = { "urxvt", NULL };
 static const char *browser[] = {"firefox", NULL};
 static const char *unity[] = {"unityhub", NULL};
 static const char *ide[] = {"monodevelop", NULL};
+static const char *discord[] = {"discord", NULL};
 
 
 static Key keys[] = {
@@ -84,6 +85,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_y,      spawn,          {.v = browser }},
 	{ MODKEY,                       XK_u,      spawn,          {.v = unity }},
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          {.v = ide }},
+	{ MODKEY|ShiftMask,		XK_d,      spawn,	   {.v = discord}},
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
