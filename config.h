@@ -31,7 +31,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -76,7 +76,8 @@ static const char *browser[] = {"firefox", NULL};
 static const char *unity[] = {"unityhub", NULL};
 static const char *ide[] = {"monodevelop", NULL};
 static const char *discord[] = {"discord", NULL};
-
+static const char *screenshot[] = {"scrot", NULL};
+static const char *gimp[] = {"gimp", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -86,6 +87,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_u,      spawn,          {.v = unity }},
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          {.v = ide }},
 	{ MODKEY|ShiftMask,		XK_d,      spawn,	   {.v = discord}},
+	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   {.v = screenshot}},
+	{ MODKEY,			XK_g,	   spawn,	   {.v = gimp}},
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
