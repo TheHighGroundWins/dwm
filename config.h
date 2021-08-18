@@ -6,10 +6,10 @@ static const Gap default_gap        = {.isgap = 1, .realgap = 20, .gappx = 20};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 20;       /* vertical padding of bar */
+static const int vertpad            = 6;       /* vertical padding of bar */
 static const int sidepad            = 20;       /* horizontal padding of bar */
-static const char *fonts[]          = { "Aurebesh:size=15" };
-static const char dmenufont[]       = "Aurebesh:size=10";
+static const char *fonts[]          = { "Aurebesh:size=16" };
+static const char dmenufont[]       = "Aurebesh:size=16";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -74,6 +74,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *browser[] = {"firefox", NULL};
 static const char *unity[] = {"unityhub", NULL};
+static const char *unrealEngine[] = {"unreal-engine",NULL};
 static const char *ide[] = {"monodevelop", NULL};
 static const char *discord[] = {"discord", NULL};
 static const char *screenshot[] = {"scrot", NULL};
@@ -85,6 +86,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_y,      spawn,          {.v = browser }},
 	{ MODKEY,                       XK_u,      spawn,          {.v = unity }},
+	{ MODKEY|ShiftMask,             XK_u,      spawn,          {.v = unrealEngine }},
 	{ MODKEY|ShiftMask,             XK_i,      spawn,          {.v = ide }},
 	{ MODKEY|ShiftMask,		XK_d,      spawn,	   {.v = discord}},
 	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   {.v = screenshot}},
