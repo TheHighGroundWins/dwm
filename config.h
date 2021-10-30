@@ -121,8 +121,7 @@ static Key keys[] = {
 	TILEKEYS(MODKEY|ShiftMask,                                 0, 1, 0)
 	TILEKEYS(MODKEY|ControlMask,                               0, 0, 1)
 	TILEKEYS(MODKEY|ShiftMask|ControlMask,                     1, 1, 1)
-	{ MODKEY,              		XK_t,      setdirs,        {.v = (int[]){ DirHor, DirVer, DirVer } } },
-	{ MODKEY|ShiftMask,             XK_t,      setdirs,        {.v = (int[]){ DirVer, DirHor, DirHor } } },
+	{ MODKEY,             XK_t,      setdirs,        {.v = (int[]){ DirVer, DirHor, DirHor } } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
