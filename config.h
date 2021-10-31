@@ -104,12 +104,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,                       XK_r,      reorganizetags, {0} },
+	{ MODKEY|ShiftMask,             XK_r,      reorganizetags, {0} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_j,      setcfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_k,      setcfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_o,      setcfact,       {.f =  0.00} },
 	{ MODKEY|ControlMask,           XK_k,      pushdown,       {0} },
 	{ MODKEY|ControlMask,           XK_j,      pushup,         {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
@@ -121,7 +118,8 @@ static Key keys[] = {
 	TILEKEYS(MODKEY|ShiftMask,                                 0, 1, 0)
 	TILEKEYS(MODKEY|ControlMask,                               0, 0, 1)
 	TILEKEYS(MODKEY|ShiftMask|ControlMask,                     1, 1, 1)
-	{ MODKEY,             XK_t,      setdirs,        {.v = (int[]){ DirVer, DirHor, DirHor } } },
+	{ MODKEY|ShiftMask,             XK_t,      setdirs,        {.v = (int[]){ DirVer, DirHor, DirHor } } },
+	{ MODKEY,             		XK_t,      setdirs,        {.v = (int[]){ DirHor, DirVer, DirVer } } },	
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },

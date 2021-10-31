@@ -114,7 +114,6 @@ typedef struct Client Client;
 struct Client {
 	char name[256];
 	float mina, maxa;
-	float cfact;
 	int x, y, w, h;
 	int oldx, oldy, oldw, oldh;
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
@@ -247,7 +246,6 @@ static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setgaps(const Arg *arg);
 static void setlayout(const Arg *arg);
-static void setcfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
@@ -1139,7 +1137,6 @@ manage(Window w, XWindowAttributes *wa)
 	c->w = c->oldw = wa->width;
 	c->h = c->oldh = wa->height;
 	c->oldbw = wa->border_width;
-	c->cfact = 1.0;
 
 	updatetitle(c);
 	if (XGetTransientForHint(dpy, w, &trans) && (t = wintoclient(trans))) {
@@ -1244,7 +1241,7 @@ monocle(Monitor *m)
 	if (n > 0) /* override layout symbol */
 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
-		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
+		resize(c, m->wx+m->gap->gappx, m->wy+m->gap->gappx, m->ww - 2 * (c->bw+m->gap->gappx), m->wh - 2 * (c->bw+m->gap->gappx), 0);
 }
 
 void
@@ -1968,23 +1965,6 @@ setlayout(const Arg *arg)
 		drawbar(selmon);
 }
 
-void setcfact(const Arg *arg) {
-	float f;
-	Client *c;
-
-	c = selmon->sel;
-
-	if(!arg || !c || !selmon->lt[selmon->sellt]->arrange)
-		return;
-	f = arg->f + c->cfact;
-	if(arg->f == 0.0)
-		f = 1.0;
-	else if(f < 0.25 || f > 4.0)
-		return;
-	c->cfact = f;
-	arrange(selmon);
-}
-
 void
 setup(void)
 {
@@ -2138,7 +2118,6 @@ tagmon(const Arg *arg)
 void
 tile(Monitor *m)
 {
-	float mfacts = 0, sfacts = 0;
 	Client *c;
 	Area *ga = m->pertag->areas[m->pertag->curtag], *ma = ga + 1, *sa = ga + 2, *a;
 	unsigned int n, i, w, h, ms, ss;
@@ -2152,12 +2131,7 @@ tile(Monitor *m)
 
 	/* calculate number of clients */
 
-	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++) {
-		if (n < m->nmaster)
-			mfacts += c->cfact;
-		else
-			sfacts += c->cfact;
-	}
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
 	if (n == 0)
 		return;
 	ma->n = MIN(n, m->nmaster), sa->n = n - ma->n;
@@ -2175,12 +2149,18 @@ tile(Monitor *m)
 	for(c = nexttiled(m->clients), i = 0; i < n; c = nexttiled(c->next), i++) {
 		a = ma->n > 0 ? ma : sa;
 		f = i == 0 || ma->n == 0 ? a->fact : 1, f /= --a->n + f;
-		w = (a->dir == DirVer ? 1 : f) * (a->fx - a->x);
-		h = (a->dir == DirHor ? 1 : f) * (a->fy - a->y);
-		resize(c, m->wx + a->x, m->wy + a->y, w - 2 * c->bw, h - 2 * c->bw, False);
+		w = (a->dir == DirVer ? 1 : f) * (a->fx - a->x - m->gap->gappx);
+	
+		w = (a->dir == DirVer ? 1 : f) * (a->fx - a->x - m->gap->gappx);
+		h = (a->dir == DirHor ? 1 : f) * (a->fy - a->y - m->gap->gappx);
+		resize(c, m->wx + a->x + m->gap->gappx, m->wy + a->y + m->gap->gappx, 
+				w - (c->bw+(m->gap->gappx)), h - (c->bw+(m->gap->gappx)), False);
 		a->x += a->dir == DirHor ? w : 0;
 		a->y += a->dir == DirVer ? h : 0;
+
 	}
+
+
 }
 
 void
