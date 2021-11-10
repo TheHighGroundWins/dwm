@@ -6,7 +6,7 @@ static const Gap default_gap        = {.isgap = 1, .realgap = 20, .gappx = 20};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 6;       /* vertical padding of bar */
+static const int vertpad            = 20;       /* vertical padding of bar */
 static const int sidepad            = 20;       /* horizontal padding of bar */
 static const char *fonts[]          = { "Aurebesh:size=16" };
 static const char dmenufont[]       = "Aurebesh:size=16";
@@ -81,7 +81,7 @@ static const char *dmenumount[] = { "dmenu_mount", "-m", dmenumon, "-fn", dmenuf
 static const char *termcmd[]  = { "st", NULL };
 static const char *browser[] = {"firefox", NULL};
 static const char *unity[] = {"unityhub", NULL};
-static const char *unrealEngine[] = {"unreal-engine",NULL};
+static const char *unrealEngine[] = {"unrealEngine",NULL};
 static const char *ide[] = {"monodevelop", NULL};
 static const char *discord[] = {"discord", NULL};
 static const char *screenshot[] = {"scrot", NULL};
