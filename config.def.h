@@ -6,7 +6,7 @@ static const Gap default_gap        = {.isgap = 1, .realgap = 20, .gappx = 20};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 6;       /* vertical padding of bar */
+static const int vertpad            = 20;       /* vertical padding of bar */
 static const int sidepad            = 20;       /* horizontal padding of bar */
 static const char *fonts[]          = { "Aurebesh:size=16" };
 static const char dmenufont[]       = "Aurebesh:size=16";
@@ -15,8 +15,8 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const unsigned int baralpha = 0xd0;
-static const unsigned int borderalpha = OPAQUE;
+static const unsigned int baralpha = 140;
+static const unsigned int borderalpha = 140;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -79,9 +79,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenumount[] = { "dmenu_mount", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *browser[] = {"firefox", NULL};
+static const char *browser[] = {"librewolf", NULL};
 static const char *unity[] = {"unityhub", NULL};
-static const char *unrealEngine[] = {"unreal-engine",NULL};
+static const char *unrealEngine[] = {"unrealEngine",NULL};
 static const char *ide[] = {"monodevelop", NULL};
 static const char *discord[] = {"discord", NULL};
 static const char *screenshot[] = {"scrot", NULL};
