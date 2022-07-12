@@ -2184,15 +2184,18 @@ tile(Monitor *m)
 			h = (a->dir == DirHor ? 1 : f) * ((a->fy - a->y) * (c->cfact / mfacts));
 
 			resize(c, m->wx + a->x + m->gap->gappx, m->wy + a->y + m->gap->gappx, 
-					w - (c->bw+(m->gap->gappx)), h + (c->bw + (m->gap->gappx)/8), False);
+					w - (c->bw + (m->gap->gappx)), h + (c->bw - (m->gap->gappx)*2), False);
+
+//		resize(c, m->wx+m->gap->gappx, m->wy+m->gap->gappx, m->ww - 2 * (c->bw+m->gap->gappx), m->wh - 2 * (c->bw+m->gap->gappx), 0);
+
 			mfacts -= c->cfact;
 		}
 		else
 		{
 
 			h = (a->dir == DirHor ? 1 : f) * ((a->fy - a->y) * (c->cfact / sfacts));
-			resize(c, m->wx + a->x + m->gap->gappx, m->wy + a->y + m->gap->gappx, 
-					w - (c->bw+(m->gap->gappx)), h + (c->bw + (m->gap->gappx)/8), False);
+			resize(c, m->wx + a->x + m->gap->gappx, m->wy + a->y + m->gap->gappx,
+					w - (c->bw + (m->gap->gappx)), h + (c->bw - (m->gap->gappx)*2), False);
 			sfacts -= c->cfact;
 		}
 		a->x += a->dir == DirHor ? w : 0;
