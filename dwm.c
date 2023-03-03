@@ -2193,7 +2193,7 @@ tile(Monitor *m)
 		else
 		{
 
-			h = (a->dir == DirHor ? 1 : f) * ((a->fy - a->y) * (c->cfact / sfacts));
+			h = (a->dir == DirHor ? 1 : f) *((a->fy - a->y) * (c->cfact / sfacts));
 			resize(c, m->wx + a->x + m->gap->gappx, m->wy + a->y + m->gap->gappx,
 					w - (c->bw + (m->gap->gappx)), h + (c->bw - (m->gap->gappx)*2), False);
 			sfacts -= c->cfact;
