@@ -89,7 +89,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,		XK_m,	   spawn,	   {.v = dmenumount} },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,		XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_y,      spawn,          {.v = browser }},
 	{ MODKEY,                       XK_u,      spawn,          {.v = unity }},
 	{ MODKEY|ShiftMask,             XK_u,      spawn,          {.v = unrealEngine }},
